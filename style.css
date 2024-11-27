@@ -1,0 +1,31 @@
+body {
+    background-color: midnightblue;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+}
+
+h1 {
+    color: antiquewhite;
+}
+
+h2 {
+    color: antiquewhite;
+}
+
+p {
+    color: antiquewhite;
+}
+
+a {
+    color: antiquewhite;
+    padding: 20px;
+}
+
+#NavContainer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
