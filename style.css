@@ -29,3 +29,11 @@ a {
     justify-content: center;
     align-items: center;
 }
+
+#Date {
+    color: antiquewhite;
+}
+
+hr {
+    width: 100%;
+}

@@ -22,6 +22,10 @@
 <h1>Welcome to Jellies!</h1>
 <h2>Your source of jellyfish and jellyfish aquariums.</h2>
 
+<!--A Function-->
+<p id="Date">
+    <?php echo date("m.d.y") ; ?>
+</p>
 
 <!-- Business Description -->
 <h2>About Us</h2>
