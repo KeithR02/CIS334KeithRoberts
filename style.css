@@ -37,3 +37,20 @@ a {
 hr {
     width: 100%;
 }
+
+/*-------------\/ products styling \/----------------*/
+table {
+    width: 100%;
+    margin: 20px 0;
+    background-color: white;
+}
+th, td {
+    padding: 12px;
+    border: 1px solid grey;
+    text-align: left;
+}
+th {
+    background-color: grey;
+}
+
+/*-------------/\ products styling /\----------------*/
