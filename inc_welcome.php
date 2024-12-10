@@ -18,7 +18,7 @@
 <!--<hr/>-->
 
 <!--Title-->
-<h1>Check login status</h1>
+<p>Check login status</p>
 
 <!--Created two variables, one for login, one for username and an if statement to check login-->
     <?php

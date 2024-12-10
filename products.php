@@ -2,20 +2,30 @@
 <html>
 <head>
 <!-- Created 12-03-2024 by Keith Roberts -->
+<!-- Updated 12-10-2024 -->
 <title>Products</title>\
     <link rel="stylesheet" type="text/css" href="style.css"
 </head>
 <body>
 
+<!-- Includes the navigation -->
+<?php include 'inc_navigation.php'; ?>
+<hr />
+
+<!-- Includes the login status -->
+<?php include 'inc_welcome.php'; ?>
+<hr />
 
 <h1>Jellies Products</h1>
-<hr />
+
 <?php //Jellyfish product arrays (name, price, country of origin, and size)
-$BlueJellyfish = array("Blue Jelly", "56.99", "USA", "Large");
-$GreenJellyfish = array("Green Jelly", "67.74", "UK", "Small");
-$MoonJellyfish = array("Moon Jelly", "63.28", "Spain", "Large");
-$RedJellyfish = array("Red Jelly", "93.52", "Australia", "Medium");
-$PurpleJellyfish = array("Purple Jelly", "48.66", "Mexico", "Small");
+$Products = array(
+    array("Blue Jelly", "56.99", "USA", "Large"),
+    array("Green Jelly", "67.74", "UK", "Small"),
+    array("Moon Jelly", "63.28", "Spain", "Large"),
+    array("Red Jelly", "93.52", "Australia", "Medium"),
+    array("Purple Jelly", "48.66", "Mexico", "Small")
+)
 ?>
 
 <table>
@@ -25,36 +35,22 @@ $PurpleJellyfish = array("Purple Jelly", "48.66", "Mexico", "Small");
         <th>Country of Origin</th>
         <th>Jellyfish Size</th>
     </tr>
-    <tr>
-        <td><?php echo $BlueJellyfish[0]; ?></td>
-        <td><?php echo $BlueJellyfish[1]; ?></td>
-        <td><?php echo $BlueJellyfish[2]; ?></td>
-        <td><?php echo $BlueJellyfish[3]; ?></td>
-    </tr>
-    <tr>
-        <td><?php echo $GreenJellyfish[0]; ?></td>
-        <td><?php echo $GreenJellyfish[1]; ?></td>
-        <td><?php echo $GreenJellyfish[2]; ?></td>
-        <td><?php echo $GreenJellyfish[3]; ?></td>
-    </tr>
-    <tr>
-        <td><?php echo $MoonJellyfish[0]; ?></td>
-        <td><?php echo $MoonJellyfish[1]; ?></td>
-        <td><?php echo $MoonJellyfish[2]; ?></td>
-        <td><?php echo $MoonJellyfish[3]; ?></td>
-    </tr>
-    <tr>
-        <td><?php echo $RedJellyfish[0]; ?></td>
-        <td><?php echo $RedJellyfish[1]; ?></td>
-        <td><?php echo $RedJellyfish[2]; ?></td>
-        <td><?php echo $RedJellyfish[3]; ?></td>
-    </tr>
-    <tr>
-        <td><?php echo $PurpleJellyfish[0]; ?></td>
-        <td><?php echo $PurpleJellyfish[1]; ?></td>
-        <td><?php echo $PurpleJellyfish[2]; ?></td>
-        <td><?php echo $PurpleJellyfish[3]; ?></td>
-    </tr>
+
+    <?php foreach ($Products as $Product) {
+        echo "<tr>";
+        echo "<td>" . $Product[0] . "</td>";
+        echo "<td>" . $Product[1] . "</td>";
+        echo "<td>" . $Product[2] . "</td>";
+        echo "<td>" . $Product[3] . "</td>";
+        echo "<tr>";
+    }
+    ?>
+
 </table>
+
+<hr />
+<!-- Includes the footer -->
+<?php include 'inc_footer.php'; ?>
+
 </body>
 </html>
