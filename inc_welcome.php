@@ -2,7 +2,6 @@
 <html>
 <head>
     <!-- Created 12-10-2024 by Keith Roberts -->
-    <!-- -->
     <title>Jellies</title>
     <link rel="stylesheet" type="text/css" href="style.css"
 </head>

@@ -6,18 +6,7 @@
     <link rel="stylesheet" type="text/css" href="style.css"
 </head>
 <body>
-<!-- Navigation Menu -->
-<div id="navContainer">
-    <?php //arrays for nav links and captions
-    $navCaptions = array("Home", "Products");
-    $navLinks = array("index.php", "products.php");
 
-    //a for loop to display each caption and link inside the arrays
-    for ($i = 0; $i < count($navCaptions); $i++) {
-        echo '<a href="' . $navLinks[$i] . '">' . $navCaptions[$i] . '</a>';
-    }
-    ?>
-</div>
 
 <h1>Jellies Products</h1>
 <hr />
