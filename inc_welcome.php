@@ -21,7 +21,7 @@
 <!--Title-->
 <h1>Check login status</h1>
 
-<!--Created two variables, one for login and one for username and an if statement to check login-->
+<!--Created two variables, one for login, one for username and an if statement to check login-->
     <?php
         $isLogin = false;
 
