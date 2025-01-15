@@ -17,7 +17,9 @@
     <p>
         <input type="reset" value="Clear Form" />
         &nbsp;&nbsp;
-        <input type="submit" name="Submit" value="Send Form" />
+        <input type="submit" name="Submit" value="Submit Login" />
+        &nbsp;&nbsp;
+        <input type="submit" name="create" value="Create Login" />
     </p>
 </form>
 </body>
