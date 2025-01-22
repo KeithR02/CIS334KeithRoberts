@@ -12,9 +12,13 @@
 // login variable for checking login status
 $isLogin = false;
 
+$usernames = array();
+$passwords = array();
+
 // searchPasswordFile function
-function searchPasswordFile($username, $password) {
-    global $isLogin;
+function searchPasswordFile() {
+    global $usernames;
+    global $passwords;
 
     // This opens the password.txt file and reads the usernames and passwords
     $file = fopen("password.txt", "r");
@@ -23,18 +27,28 @@ function searchPasswordFile($username, $password) {
     if ($file) { // This checks if the file has been opened
 
         // this loops through the file to check each username and password
-        while (($line = fgets($file)) !== false) {
-            $storedUsername = trim($line);
-            $storedPassword = trim(fgets($file));
-
-            // assigns a true value if the username and password match
-            if ($storedUsername === $username && $storedPassword === $password) {
-                $isLogin = true;
-                break;
-            }
+        while (($username = fgets($file)) !== false) {
+            $password = fgets($file); //change code here
+            $usernames[] = trim($username); //stores username in an array
+            $passwords[] = trim($password); //stores password in an array
         }
 
         fclose($file); // Closes the file when finished
+    }
+}
+
+//this function searches for a username and password in the arrays
+function searchPasswordArrays($username, $password) {
+    global $usernames;
+    global $passwords;
+    global $isLogin;
+
+    //This loops to find a matching password and username with the arrays
+    for ($i = 0; $i < count($usernames); $i++) {
+        if ($usernames[$i] === $username && $passwords[$i] === $password) {
+            $isLogin = true;
+            break;
+        }
     }
 }
 
@@ -43,6 +57,8 @@ function searchPasswordFile($username, $password) {
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $username = $_POST['Username'];
     $password = $_POST['Password'];
+
+    searchPasswordFile();
 
     // This checks if the create button was pressed
     if (isset($_POST['create'])) {
@@ -63,7 +79,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     // This checks to see if the submit button was pressed
     elseif (isset($_POST['Submit'])) {
         // calls the function searchPasswordFile
-        searchPasswordFile($username, $password);
+        searchPasswordArrays($username, $password);
 
         // This displays if your login was successful or invalid
         if ($isLogin) {
