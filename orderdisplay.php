@@ -1,3 +1,15 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+    <title>Order Display</title>
+    <link rel="stylesheet" type="text/css" href="style.css"
+</head>
+<body>
+
+<?php
+
+
 $host = "localhost";
 $user= "root";
 $password = "";
@@ -14,3 +26,6 @@ else{
 
     $DBConnect->close();
 }
+?>
+</body>
+</html>
