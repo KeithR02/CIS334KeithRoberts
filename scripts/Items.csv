@@ -1,0 +1,11 @@
+ItemID,CountryOrigin,SizeType,PurchasedBefore
+1,USA,Small,Yes
+2,Canada,Medium,No
+3,India,Large,Yes
+4,China,Medium,No
+5,Germany,Large,Yes
+6,France,Small,Yes
+7,Italy,Medium,No
+8,UK,Small,Yes
+9,Australia,Large,No
+10,Japan,Medium,Yes
