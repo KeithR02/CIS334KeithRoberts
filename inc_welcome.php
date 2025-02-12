@@ -1,3 +1,7 @@
+<?php
+session_start();
+?>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -7,31 +11,34 @@
 </head>
 <body>
 
-<!-- Navigation Menu -->
-<!--<div id="NavContainer">-->
-<!--    <a href="index.php">Home</a>-->
-<!--    <a href="products.php">Products</a>-->
-<!--    <a href="about.php">About Us</a>-->
-<!--    <a href="contact.php">Contact</a>-->
-<!--</div>-->
+<h3>Navigation Menu</h3>
 
-<!--<hr/>-->
+<div id="NavContainer">
+    <a href="index.php">Home</a>
+    <a href="products.php">Products</a>
+    <a href="about.php">About Us</a>
+    <a href="contact.php">Contact</a>
+</div>
+
+ <form action="loginform.php">
+     <input type="submit" value="Go To Login Form" />
+ </form>
+
+<hr/>
 
 <!--Title-->
 <p>Check login status</p>
 
-<!--Created two variables, one for login, one for username and an if statement to check login-->
-    <?php
-        $isLogin = false;
-
-        $username = null;
-
-        if ($isLogin) {
-            echo "Welcome, $username!";
-        } else {
-            echo "Please log in to continue.";
-        }
-    ?>
+<?php
+// checks sessions to see if user is logged in
+if ($_SESSION['isLogin'] === true) {
+    // grabs the username from cookies
+    $username = $_COOKIE['Username'];
+    echo "<p>Welcome, $username! You are logged in.</p>";
+} else {
+    echo "<p>Please log in to continue.</p>";
+}
+?>
 
 </body>
 </html>

@@ -1,3 +1,7 @@
+<?php
+session_start();
+?>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -15,24 +19,6 @@ $isLogin = false;
 $usernames = array();
 $passwords = array();
 
-
-$host = "localhost";
-$user= "root";
-$password = "";
-$database="krdatabase";
-$DBConnect = @new mysqli($host,$user,$password,$database);
-if ($DBConnect->connect_error)
-    echo "The database server is not available at the moment. " .
-        "Connect Error is " . $DBConnect->connect_errno .
-        " " . $DBConnect->connect_error . ".";
-else{
-    echo "Connection made";
-    echo "<br />MySQL server version: " .  $DBConnect->server_version;
-    echo "<br />MySQL client version: " .  $DBConnect->client_version;
-
-    $DBConnect->close();
-}
-
 // searchPasswordFile function
 function searchPasswordFile() {
     global $usernames;
@@ -46,7 +32,7 @@ function searchPasswordFile() {
 
         // this loops through the file to check each username and password
         while (($username = fgets($file)) !== false) {
-            $password = fgets($file); //change code here
+            $password = fgets($file);
             $usernames[] = trim($username); //stores username in an array
             $passwords[] = trim($password); //stores password in an array
         }
@@ -90,6 +76,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
             fclose($file);
             echo "<p>Your new login was created.</p>\n";
+
+            // stores the username as a cookie for 30 days
+            setcookie("Username", $username, time() + 60 * 60 * 24 * 30);
         } else {
             echo "<p>Unable to create new login.</p>\n";
         }
@@ -102,12 +91,38 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         // This displays if your login was successful or invalid
         if ($isLogin) {
             echo "<p>Login successful! Welcome, $username.</p>\n";
+
+            // stores the username as a cookie for 30 days with successful login
+            setcookie("Username", $username, time() + 60 * 60 * 24 * 30);
+
+            // stores session login status as true
+            $_SESSION['isLogin'] = true;
         } else {
             echo "<p>Invalid username or password. Please try again.</p>\n";
+
+            // stores session login status as false
+            $_SESSION['isLogin'] = false;
         }
     }
 }
 ?>
+
+<?php
+// This displays the session login status to the user
+if ($_SESSION['isLogin']) {
+    echo "<p>Session Login Successful.</p>";
+} elseif ($_SESSION['isLogin'] == false) {
+    echo "<p>Session Login Failed.</p>";
+}
+?>
+
+<form action="loginform.php">
+    <input type="submit" value="Back to Login Form" />
+</form>
+
+<form action="inc_welcome.php">
+    <input type="submit" value="Go To Welcome Page" />
+</form>
 
 </body>
 </html>

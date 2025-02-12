@@ -1,3 +1,11 @@
+<?php
+// This checks if no cookies exist and the submit button was pressed
+// It will create a cookie from the login form bellow
+if (isset($_POST["Username"]) && !isset($_COOKIE["Username"])) {
+    setcookie("Username", $_POST['Username']);
+}
+?>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -10,7 +18,8 @@
 <p><b>Login Form</b></p>
 <form name="login" action="logindisplay.php" method="post">
 
-    <p>Your Username: <input type="text" name="Username" value="" /></p>
+    <!-- The username input will check if the username is saved via cookies and display the username accordingly -->
+    <p>Your Username: <input type="text" name="Username" value="<?php if (isset($_COOKIE["Username"])) { echo $_COOKIE["Username"]; } else { echo ""; } ?>" />
 
     <p>Your Password: <input type="text" name="Password" value="" size="5" /></p>
 
@@ -21,6 +30,8 @@
         &nbsp;&nbsp;
         <input type="submit" name="create" value="Create Login" />
     </p>
+
 </form>
+
 </body>
 </html>
